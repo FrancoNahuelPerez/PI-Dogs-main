@@ -5,6 +5,15 @@ import {
   GET_TEMPERAMENTS,
   GET_DOGS_NAME,
   POST_DOGS,
+  ASC_AZ_DOGS,
+  DESC_ZA_DOGS,
+  ASC_WEIGHT,
+  DESC_WEIGHT,
+  FILTER_SOURCE,
+  FILTRAR_API,
+  FILTRAR_BD,
+  FILTRAR_TEMPERAMENTS,
+  LIMPIAR_FILTROS
 } from "./actionTypes";
 
 export const getDogs = () => {
@@ -39,6 +48,7 @@ export const getTemperaments = () => {
   };
 };
 
+
 export const getDogsbyId = (id) => {
   return async function (dispatch) {
     const res = axios.get(`http://localhost:3001/dogs/${id}`);
@@ -65,3 +75,58 @@ export const postDogs = (props) => {
     }
   };
 };
+
+export const dogsAscendente = () =>{
+  return function (dispatch){
+    dispatch({type:ASC_AZ_DOGS})
+  }
+}
+
+export const dogsDescendente = () =>{
+  return function(dispatch){
+    dispatch({type:DESC_ZA_DOGS})
+  }
+}
+
+export const pesoAscendente = () =>{
+  return function(dispatch){
+    dispatch({type:ASC_WEIGHT})
+  }
+}
+
+export const pesoDescendente = () =>{
+  return function(dispatch){
+    dispatch({type: DESC_WEIGHT})
+  }
+}
+
+export const filtrarBd = () =>{
+  return{
+    type:FILTRAR_BD
+  }
+}
+
+export const filtrarApi = () =>{
+  return{
+    type:FILTRAR_API
+  }
+}
+
+export const filterClean = () =>{
+  return{
+    type:LIMPIAR_FILTROS
+  }
+}
+
+export const filterr = () =>{
+  return{
+    type:FILTER_SOURCE
+  }
+}
+
+export const filterTemperaments = (payload) =>{
+  return{
+    type:FILTRAR_TEMPERAMENTS,
+    payload,
+  }
+}

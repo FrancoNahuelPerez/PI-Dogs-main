@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Card(props) {
+  console.log('temperaments', props.temperaments)
   return (
     <div>
       <Link to={`/detail/${props.id}`}>

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postDogs, getDogs } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ export default function Form() {
   const navigate = useNavigate();
 
   const temperamentos = useSelector((state) => state.temperaments);
+
 
   const [form, setForm] = useState({
     name: "",
@@ -59,26 +61,41 @@ export default function Form() {
     }
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    if (!error.name) {
-      dispatch(postDogs(form));
-      dispatch(getDogs());
-      setForm({
-        name: "",
-        max_height: "",
-        min_height: "",
-        max_weight: "",
-        min_weight: "",
-        life_span: "",
-        temperaments: [],
-        image: "",
-      });
-      navigate("/home");
-    } else {
-      alert("Errors exist");
-    }
-  };
+  // const submitHandler = (event) => {
+  //   event.preventDefault();
+  //   if (!error.name) {
+  //     dispatch(postDogs(form));
+  //     dispatch(getDogs());
+  //     setForm({
+  //       name: "",
+  //       max_height: "",
+  //       min_height: "",
+  //       max_weight: "",
+  //       min_weight: "",
+  //       life_span: "",
+  //       temperaments:[],
+  //       image: "",
+  //     });
+  //     navigate("/home");
+  //   } else {
+  //     alert("Errors exist");
+  //   }
+  // };
+
+
+  const submitHandler = (event) =>{
+      event.preventDefault()
+
+      const res = axios.post('http://localhost:3001/dogs', form)
+
+      if(res){
+        alert("The dog was created successfully")
+        navigate('/home')
+      }
+      else{
+        alert('The dog has not been created')
+      }
+  }
 
   const validation = ({
     name,
@@ -253,8 +270,8 @@ export default function Form() {
           <select
             name="temperaments"
             onChange={changeSelectHandler}
-            >
-            {temperamentos.map((temp) => (
+            > 
+            {temperamentos?.map((temp) => (
               <option value={temp.id} key={temp.id}>
                 {temp.name}
               </option>
