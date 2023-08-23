@@ -52,7 +52,6 @@ export default function CardConteiner() {
               maxPeso={dogss?.max_weight}
               minPeso={dogss?.min_weight}
               Temperaments={dogss?.Temperaments}
-              temperaments={dogss.Temperaments}
               fromApi={dogss.fromApi ? true : false}
             />
           ))}

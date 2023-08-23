@@ -1,19 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function Card(props) {
-  console.log('temperaments', props.temperaments)
+export default function Card({id, image, name, minPeso, maxPeso, Temperaments}) {
+
+  const renderTemperaments = () => {
+    if (typeof Temperaments === 'string') {
+      // Si Temperaments es un string, renderizarlo en un h4
+      return <h4>{Temperaments}</h4>;
+    } else if (Array.isArray(Temperaments)) {
+      // Si Temperaments es un arreglo, mapearlo y renderizar los nombres en h4
+      return Temperaments.map((temperament, index) => (
+        <h4 key={index}>{temperament.name}</h4>
+      ));
+    } else {
+      // Si Temperaments no es ni string ni arreglo, no renderizar nada
+      return null;
+    }
+  };
+
   return (
     <div>
-      <Link to={`/detail/${props.id}`}>
-        <h2>{props.name}</h2>
+      <Link to={`/detail/${id}`}>
+        <h2>{name}</h2>
       </Link>
-      <Link to={`/detail/${props.id}`}>
-        <img src={props.image} alt={props.name}></img>
+      <Link to={`/detail/${id}`}>
+        <img src={image} alt={name}></img>
       </Link>
-      <h4>{props.Temperaments}</h4>
+      {renderTemperaments()}
       <h3>
-        {props.minPeso}Kg - {props.maxPeso}Kg
+        {minPeso}Kg - {maxPeso}Kg
       </h3>
     </div>
   )
