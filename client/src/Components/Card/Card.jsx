@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import style from './Card.module.css'
+
 
 export default function Card({id, image, name, minPeso, maxPeso, Temperaments}) {
 
@@ -19,7 +21,7 @@ export default function Card({id, image, name, minPeso, maxPeso, Temperaments}) 
   };
 
   return (
-    <div>
+    <div className={style.card}>
       <Link to={`/detail/${id}`}>
         <h2>{name}</h2>
       </Link>
