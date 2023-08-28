@@ -1,0 +1,39 @@
+/* SearchBar.module.css */
+
+.search-bar-container {
+  font-family: cursive;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    font-family: cursive;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 16px;
+    margin-right: 10px;
+    width: 200px;
+  }
+  
+  .search-button {
+    font-family: cursive;
+    background-color: #bcc3f5; /* Rojo brillante */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color:#e0e0e0; /* Rojo más claro al pasar el mouse */
+  }
+  
+  .error-message {
+    color: #FF4136; /* Rojo brillante */
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  

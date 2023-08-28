@@ -1,10 +1,6 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ margin: 0;
+ background-image: url('https://img.freepik.com/vector-premium/patron-perro-costuras-huellas-pata-huesos-corazones-bolas-textura-pie-gato-patron-huella-perro-huesos-textura-perro-ilustracion-vectorial-dibujada-mano-estilo-garabato-sobre-fondo-blanco_192280-1320.jpg?w=996');
 }
 
 code {

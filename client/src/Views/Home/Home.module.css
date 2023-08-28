@@ -1,0 +1,63 @@
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  font-family: cursive;
+}
+/* Estilos para los formularios y controles */
+.formContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: #d6dbff; /* Color de fondo de la barra */
+  border-radius: 20px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+/* Estilos para las etiquetas de los formularios */
+.formLabel {
+  font-weight: cursive;
+  margin-right: 8px; /* Espaciado entre etiquetas y elementos */
+}
+
+/* Estilos para los select y botón */
+.formControl {
+  font-family: cursive;
+  background-color: #bcc3f5;
+  border-color: #6f7bd7;
+  padding: 6px;
+  margin: 4px;
+  border: 1px #8993e1 ;
+  border-radius: 8px;
+  max-width: 150px;
+  transition: background-color 0.2s; /* Transición suave en el hover */
+}
+
+.formControl:hover,
+.resetButton:hover {
+  background-color: #e0e0e0; /* Cambio de color en el hover */
+}
+
+/* Estilos para el botón de reset */
+.resetButton {
+  font-family: cursive;
+  background-color: #6f7bd7;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 4px;
+  max-width: 150px;
+  transition: background-color 0.2s; /* Transición suave en el hover */
+}
+/* Estilos para el contenedor de los resultados o la tarjeta */
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

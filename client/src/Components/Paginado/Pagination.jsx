@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import styles from './Pagination.module.css'
+
 
 const VISIBLE_PAGE_COUNT = 3;
 export default function Pagination({ totalPages, currentPage, onPageChange }) {
@@ -51,6 +53,9 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
     return visiblePages.map((page) => (
       <span
         key={page}
+        className={`${styles.pageIndicator} ${
+          page === currentPage ? styles.currentPage : styles.otherPage
+        }`}
         onClick={() => onPageChange(page)} // Llama a la función onPageChange con el índice de la página seleccionada como parámetro
       >
         {page + 1}
@@ -59,21 +64,36 @@ export default function Pagination({ totalPages, currentPage, onPageChange }) {
   };
 
   return (
-    <div>
-      <button onClick={handleFirstPage} disabled={currentPage === 0}>
+    <div className={styles.paginationContainer}>
+      <button
+        className={`${styles.button} ${currentPage === 0 ? styles.disabled : ""}`}
+        onClick={handleFirstPage}
+        disabled={currentPage === 0}
+      >
         First
       </button>
-      <button onClick={handlePrevPage} disabled={currentPage === 0}>
+      <button
+      className={`${styles.button} ${currentPage === 0 ? styles.disabled : ""}`}
+        onClick={handlePrevPage}
+        disabled={currentPage === 0}
+      >
         Prev
       </button>
       <div>{renderPageIndicators()}</div>
       <button
+       className={`${styles.button} ${
+        currentPage === totalPages - 1 ? styles.disabled : ""
+      }`}
+        
         onClick={handleNextPage}
         disabled={currentPage === totalPages - 1}
       >
         Next
       </button>
       <button
+        className={`${styles.button} ${
+          currentPage === totalPages - 1 ? styles.disabled : ""
+        }`}
         onClick={handleLastPage}
         disabled={currentPage === totalPages - 1}
       >

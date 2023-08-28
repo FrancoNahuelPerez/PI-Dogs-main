@@ -1,0 +1,107 @@
+/* Estilos para el contenedor principal */
+/* Estilos para el contenedor principal */
+.container {
+  font-family: cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  max-width: 600px; /* Ancho máximo */
+  margin: 0 auto; /* Centrar horizontalmente */
+  
+  /* Agregar borde blanco */
+  padding: 20px; /* Espacio entre el borde y el contenido */
+  box-sizing: border-box; /* Incluir el borde en el tamaño total */
+}
+  /* Estilos para la imagen */
+  .image {
+    width: 100%; /* Ancho del 100% del contenedor */
+    max-width: 400px; /* Ancho máximo de la imagen */
+    height: auto; /* Mantener la proporción de la imagen */
+    border-radius: 12px;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    font-family: cursive;
+    background-color: #d6dbff; /* Fondo blanco sólido */
+    border: none;
+    color: #6f7bd7 ;
+    border-radius: 30px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 90%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  
+  /* Estilos para los encabezados */
+  .heading {
+    font-size: 24px;
+    margin-bottom: 5px;
+    /* border-bottom: 1px solid white; Borde inferior para separar encabezados */
+    padding-bottom: 5px;
+    margin-top: 0; /* Eliminar margen superior */
+  }
+  
+  /* Estilos para la información */
+  .info {
+    font-size: 18px;
+    margin-bottom: 10px;
+    /* border-bottom: 1px solid; Borde inferior para separar propiedades */
+    padding-bottom: 10px;
+  }
+  
+  /* Estilos para el mensaje de alerta */
+  .alert {
+    font-size: 18px;
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .property {
+    margin-bottom: 5px;
+    padding: 5px;
+    /* border: 1px solid; */
+    border-radius: 4px;
+    position: relative; /* Para posicionar el pseudo-elemento */
+  }
+  
+  /* Colores distintivos para las propiedades */
+  /* .name {
+    border-color: #a3abeb;
+    border-radius: 20px;
+  }
+  .id {
+    border-color: #a3abeb;
+    border: none;
+  }
+  .temperaments {
+    border-color: #a3abeb;
+  }
+  .height {
+    border-color: #a3abeb;
+  }
+  .weight {
+    border-color:#a3abeb;
+  }
+  .lifeSpan {
+    border-color: #a3abeb;
+  } */
+
+
+  .goBackButton {
+    font-family: cursive;
+    background-color: #8993e1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .goBackButton:hover {
+    background-color: #e0e0e0;
+  }

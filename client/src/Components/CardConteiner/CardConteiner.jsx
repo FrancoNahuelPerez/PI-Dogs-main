@@ -4,11 +4,11 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import Pagination from "../Paginado/Pagination";
-
+import style from './CardConteiner.module.css'
 
 export default function CardConteiner() {
   const dogs = useSelector((state) => state.dogs);
-  const cardPerPages = 10;
+  const cardPerPages = 8;
   const totalPages = Math.ceil(dogs.length / cardPerPages);
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -33,8 +33,8 @@ export default function CardConteiner() {
 
     if (currentDogs.length === 0) {
       return (
-        <p>
-          No recipes were found with the specified search term, please check the
+        <p className={style.formError}>
+          No Dogs were found with the specified search term, please check the
           name and try again.
         </p>
       );
@@ -43,7 +43,7 @@ export default function CardConteiner() {
     return (
       <>
         <div>
-          {currentDogs.slice(0, 5).map((dogss) => (
+          {currentDogs.slice(0, 4).map((dogss) => (
             <Card
               id={dogss?.id}
               key={dogss?.id}
@@ -57,7 +57,7 @@ export default function CardConteiner() {
           ))}
         </div>
         <div>
-          {currentDogs.slice(5, 10).map((dogss) => (
+          {currentDogs.slice(4, 8).map((dogss) => (
             <Card
               id={dogss?.id}
               key={dogss?.id}
@@ -74,10 +74,11 @@ export default function CardConteiner() {
     );
   };
   return(
-    <div>
+    <div className={style.cardContainer}>
       {renderCards()}
-      <div>
+      <div className={style.cardColumn}>
         <Pagination
+        className={style.paginationContainer}
         totalPages={totalPages}
         currentPage={currentPage}
         onPageChange={handlePageChange}/>

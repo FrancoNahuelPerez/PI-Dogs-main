@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTemperaments, postDogs, getDogs } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import styles from "./Form.module.css";
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -12,7 +13,6 @@ export default function Form() {
   const navigate = useNavigate();
 
   const temperamentos = useSelector((state) => state.temperaments);
-
 
   const [form, setForm] = useState({
     name: "",
@@ -82,20 +82,18 @@ export default function Form() {
   //   }
   // };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
 
-  const submitHandler = (event) =>{
-      event.preventDefault()
+    const res = axios.post("http://localhost:3001/dogs", form);
 
-      const res = axios.post('http://localhost:3001/dogs', form)
-
-      if(res){
-        alert("The dog was created successfully")
-        navigate('/home')
-      }
-      else{
-        alert('The dog has not been created')
-      }
-  }
+    if (res) {
+      alert("The dog was created successfully");
+      navigate("/home");
+    } else {
+      alert("The dog has not been created");
+    }
+  };
 
   const validation = ({
     name,
@@ -196,12 +194,15 @@ export default function Form() {
   };
 
   return (
-    <div>
+    <div className={styles.formContainer}>
       <form onSubmit={submitHandler}>
         <div>
-          <h1>Create your Dog</h1>
-          <label htmlFor="name">Name:</label>
+          <h1 className={styles.formTitle}>Create your Dog</h1>
+          <label className={styles.formLabel} htmlFor="name">
+            Name:
+          </label>
           <input
+            className={styles.formInput}
             id="name"
             type="text"
             value={form.name}
@@ -209,10 +210,13 @@ export default function Form() {
             name="name"
             placeholder="Insert Name..."
           ></input>
-          {error.name && <span>{error.name}</span>}
+          {error.name && <span className={styles.formError}>{error.name}</span>}
           <hr></hr>
-          <label htmlFor="max_height">Max-height:</label>
+          <label className={styles.formLabel} htmlFor="max_height">
+            Max-height:
+          </label>
           <input
+            className={styles.formInput}
             id="max_height"
             type="text"
             value={form.max_height}
@@ -220,10 +224,15 @@ export default function Form() {
             name="max_height"
             placeholder="Insert Max-height..."
           ></input>
-          {error.max_height && <span>{error.max_height}</span>}
+          {error.max_height && (
+            <span className={styles.formError}>{error.max_height}</span>
+          )}
           <hr></hr>
-          <label htmlFor="min_height">Min-height:</label>
+          <label className={styles.formLabel} htmlFor="min_height">
+            Min-height:
+          </label>
           <input
+            className={styles.formInput}
             id="min_height"
             type="text"
             value={form.min_height}
@@ -231,10 +240,15 @@ export default function Form() {
             name="min_height"
             placeholder="Insert Min-height..."
           ></input>
-          {error.min_height && <span>{error.min_height}</span>}
+          {error.min_height && (
+            <span className={styles.formError}>{error.min_height}</span>
+          )}
           <hr></hr>
-          <label htmlFor="max_weight">Max-weight</label>
+          <label className={styles.formLabel} htmlFor="max_weight">
+            Max-weight
+          </label>
           <input
+            className={styles.formInput}
             id="max_weight"
             type="text"
             value={form.max_weight}
@@ -242,10 +256,15 @@ export default function Form() {
             name="max_weight"
             placeholder="Insert Max-weight..."
           ></input>
-          {error.max_weight && <span>{error.max_weight}</span>}
+          {error.max_weight && (
+            <span className={styles.formError}>{error.max_weight}</span>
+          )}
           <hr></hr>
-          <label htmlFor="min_weight">Min-weight</label>
+          <label className={styles.formLabel} htmlFor="min_weight">
+            Min-weight
+          </label>
           <input
+            className={styles.formInput}
             id="min_weight"
             type="text"
             value={form.min_weight}
@@ -253,10 +272,15 @@ export default function Form() {
             name="min_weight"
             placeholder="Insert Min-weight..."
           ></input>
-          {error.min_weight && <span>{error.min_weight}</span>}
+          {error.min_weight && (
+            <span className={styles.formError}>{error.min_weight}</span>
+          )}
           <hr></hr>
-          <label htmlFor="life_span">Life-span</label>
+          <label className={styles.formLabel} htmlFor="life_span">
+            Life-span
+          </label>
           <input
+            className={styles.formInput}
             id="life_span"
             type="text"
             value={form.life_span}
@@ -264,33 +288,48 @@ export default function Form() {
             name="life_span"
             placeholder="Inssert Life-span..."
           ></input>
-          {error.life_span && <span>{error.life_span}</span>}
+          {error.life_span && (
+            <span className={styles.formError}>{error.life_span}</span>
+          )}
           <hr></hr>
-          <label htmlFor="temperaments">Temperaments:</label>
+          <label className={styles.formLabel} htmlFor="temperaments">
+            Temperaments:
+          </label>
           <select
             name="temperaments"
             onChange={changeSelectHandler}
-            > 
+            className={styles.formInput}
+          >
             {temperamentos?.map((temp) => (
               <option value={temp.id} key={temp.id}>
                 {temp.name}
               </option>
             ))}
           </select>
-          {error.temperaments && <span>{error.temperaments}</span>}
+          {error.temperaments && (
+            <span className={styles.formError}>{error.temperaments}</span>
+          )}
           <hr></hr>
-          <label>Image:</label>
+          <label className={styles.formLabel}>Image:</label>
           <input
+            className={styles.formInput}
             type="text"
             value={form.image}
             onChange={changeHandler}
             name="image"
             placeholder="Inset URL..."
           ></input>
-          {error.image && <span>{error.image}</span>}
+          {error.image && (
+            <span className={styles.formError}>{error.image}</span>
+          )}
           <hr></hr>
-          <img src={form.image} alt={form.name}></img>
+          <img
+            className={styles.formImage}
+            src={form.image}
+            alt={form.name}
+          ></img>
           <button
+            className={styles.formButton}
             disabled={
               !form.name ||
               !form.image ||
@@ -307,14 +346,18 @@ export default function Form() {
         </div>
       </form>
       <h3>Temperaments:</h3>
-      {form.temperaments.map((element) => {
-        return (
-          <div key={element}>
-            <p>{getTemperamentName(element)}</p>
-            <button onClick={() => handleDelete(element)}>X</button>
-          </div>
-        );
-      })}
+      <div className={styles.formTemperaments}>
+        {form.temperaments.map((element) => {
+          return (
+            <div key={element}  className={styles.formTemperament}>
+              <p className={styles.formTemperamentName}>{getTemperamentName(element)}</p>
+              <button 
+              onClick={() => handleDelete(element)}
+              className={styles.formTemperamentDelete} ></button>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

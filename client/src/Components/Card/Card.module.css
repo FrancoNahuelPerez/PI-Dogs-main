@@ -1,44 +1,93 @@
-/* Card.css */
+/* Card.module.css */
 .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+  font-family: cursive;
+  border: 1px solid #e1e1e1;
+  background-color: #d6dbff;
+  border-radius: 30px;
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  height: 370px;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card a {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.card h3 {
+  margin: 10px 0; /* Reducir el margen superior e inferior */
+  font-size: 1.2rem; /* Cambiar el tamaño del h3 */
+  text-decoration: wavy;
+}
+
+.card img {
+  width: 80%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card h4 {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #6f7bd7;
+}
+
+.cardWeight {
+  margin: 8px 0;
+  font-size: 1.2rem;
+}
+
+.cardWeight span {
+  border: 1px  #d6dbff;
+  padding: 2px 4px;
+  border-radius: 12px;
+  color:#6f7bd7;
+}
+
+.card-info {
+  padding: 14px;
+}
+
+.card-info p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.card-button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .card h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
-  }
-  
-  .card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-top: 10px;
-  }
-  
-  .card h4 {
-    margin: 5px;
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .card h3 {
-    margin: 10px 0;
-    font-size: 1.2rem;
-  }
-  
-  .card a {
-    text-decoration: none;
-    color: #333;
-  }
-  
+}

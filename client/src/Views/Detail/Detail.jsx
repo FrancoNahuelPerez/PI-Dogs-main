@@ -1,14 +1,14 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { getDogsbyId } from "../../Redux/actions";
+import styles from './Detail.module.css'
+
 
 export default function Detail() {
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const { id } = useParams();
 
   const [dogs, setDogs] = useState({});
@@ -23,21 +23,31 @@ export default function Detail() {
     return setDogs({})
   }, [id]);
 
+  const handleGoBack = () => {
+    navigate(-1); // Volver atrás en la navegación
+  };
  
 
   return (
-    <div>
-      <img src={dogs?.image} alt={dogs?.name}></img>
-      <h2>Name:{dogs?.name}</h2>
-      <h2>ID:{dogs?.id}</h2>
-      <h3>Temperaments: {dogs?.Temperaments}</h3>
-      <h3>
-        Height: {dogs?.min_height}cm - {dogs?.max_height}cm
-      </h3>
-      <h3>
-        Weight: {dogs?.min_weight}Kg - {dogs?.max_weight}Kg
-      </h3>
-      <h3>LifeSpan: {dogs?.life_span}</h3>
+    <div className={styles.container}>
+      {dogs.id ? (
+        <div className={styles.card}>
+          <img src={dogs.image} alt={dogs.name} className={styles.image} />
+          <h2 className={styles.h2}>Name: {dogs.name}</h2>
+          <h2 className={styles.heading}>ID: {dogs.id}</h2>
+          <h3 className={`${styles.info} ${styles.property} ${styles.temperaments}`}>Temperaments:{dogs.Temperaments}</h3>
+          <h3 className={`${styles.info} ${styles.property} ${styles.height}`}>
+            Height: {dogs.min_height}cm - {dogs.max_height}cm
+          </h3>
+          <h3 className={`${styles.info} ${styles.property} ${styles.weight}`}>
+            Weight: {dogs.min_weight}Kg - {dogs.max_weight}Kg
+          </h3>
+          <h3 className={`${styles.info} ${styles.property} ${styles.lifeSpan}`}>LifeSpan: {dogs.life_span}</h3>
+        </div>
+      ) : (
+        <p className={styles.alert}>Details not found</p>
+      )}
+      <button className={styles.goBackButton} onClick={handleGoBack}>Back</button>
     </div>
   );
 }

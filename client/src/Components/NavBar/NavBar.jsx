@@ -1,19 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
+import styles from './NavBar.module.css'
 
 export default function NavBar() {
   return (
-    <div>
+    <div className={styles["navbar-container"]}>
       <Link to={'/home'}>
-        <button>HOME</button>
+        <button className={styles["navbar-button"]}>HOME</button>
       </Link>
-      <SearchBar/>
+      <SearchBar className={styles["search-bar"]} />
       <Link to={'/form'}>
-        <button>CREATE</button>
+        <button className={styles["navbar-button"]}>CREATE</button>
       </Link>
       <Link to={'/'}>
-        <button>LOGOUT</button>
+        <button className={styles["navbar-button"]}>LOGOUT</button>
       </Link>
     </div>
   );

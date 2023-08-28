@@ -1,12 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import style from './Card.module.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import style from "./Card.module.css";
 
-
-export default function Card({id, image, name, minPeso, maxPeso, Temperaments}) {
-
+export default function Card({
+  id,
+  image,
+  name,
+  minPeso,
+  maxPeso,
+  Temperaments,
+}) {
   const renderTemperaments = () => {
-    if (typeof Temperaments === 'string') {
+    if (typeof Temperaments === "string") {
       // Si Temperaments es un string, renderizarlo en un h4
       return <h4>{Temperaments}</h4>;
     } else if (Array.isArray(Temperaments)) {
@@ -23,15 +28,15 @@ export default function Card({id, image, name, minPeso, maxPeso, Temperaments}) 
   return (
     <div className={style.card}>
       <Link to={`/detail/${id}`}>
-        <h2>{name}</h2>
+        <h3>{name}</h3>
       </Link>
       <Link to={`/detail/${id}`}>
-        <img src={image} alt={name}></img>
+        <img className={style.cardImage} src={image} alt={name}></img>
       </Link>
-      {renderTemperaments()}
-      <h3>
-        {minPeso}Kg - {maxPeso}Kg
-      </h3>
+      <div className={style.temperaments}>{renderTemperaments()}</div>
+      <h4 className={style.cardWeight}>
+        <span>{minPeso}Kg</span> - <span>{maxPeso}Kg</span>
+      </h4>
     </div>
-  )
+  );
 }

@@ -16,7 +16,16 @@ import {
   getTemperaments,
 } from "../../Redux/actions";
 
-function Home({filterr,dogsAscendente,dogsDescendente,filterTemperaments,pesoAscendente,pesoDescendente}) {
+import style from "./Home.module.css";
+
+function Home({
+  filterr,
+  dogsAscendente,
+  dogsDescendente,
+  filterTemperaments,
+  pesoAscendente,
+  pesoDescendente,
+}) {
   const dispatch = useDispatch();
 
   const allTemperaments = useSelector((state) => state.temperaments);
@@ -29,7 +38,6 @@ function Home({filterr,dogsAscendente,dogsDescendente,filterTemperaments,pesoAsc
 
   useEffect(() => {
     dispatch(getTemperaments());
-   
   }, [dispatch]);
 
   const handleReset = () => {
@@ -68,37 +76,39 @@ function Home({filterr,dogsAscendente,dogsDescendente,filterTemperaments,pesoAsc
 
   return (
     <>
-      <div>
-        <form>
+      <div className={style.container}>
+        <form className={style.formContainer}>
           <div>
-            <label>Ordenar A-Z:</label>
-            <select onChange={handleSortAZChange}>
+            <label className={style.formLabel}>Ordenar A-Z:</label>
+            <select className={style.formControl} onChange={handleSortAZChange}>
               <option value="">Select</option>
               <option value="asc">A-Z Ascending</option>
               <option value="des">Z-A Descending</option>
             </select>
           </div>
           <div>
-            <label>Ordenar Peso:</label>
-            <select onChange={handleSortWeight}>
+            <label className={style.formLabel}>Ordenar Peso:</label>
+            <select className={style.formControl} onChange={handleSortWeight}>
               <option value="">Select</option>
-              <option value="asc">100-0 Descending</option>
-              <option value="des">0-100 Ascending</option>
+              <option value="asc">100Kg - 0Kg</option>
+              <option value="des">0Kg - 100Kg</option>
             </select>
           </div>
           <div>
-            <label>Filtrar Por:</label>
-            <select onChange={(event) => handleSourceChange(event.target.value)}>
-              <option value='none'>All Dogs</option>
-              <option value= 'API'>Api Dogs</option>
-              <option value= 'Database'>Database Dogs</option>
+            <label className={style.formLabel}>Filtrar Por:</label>
+            <select className={style.formControl}
+              onChange={(event) => handleSourceChange(event.target.value)}
+            >
+              <option value="none">All Dogs</option>
+              <option value="API">Api Dogs</option>
+              <option value="Database">Database Dogs</option>
             </select>
           </div>
           <div>
-            <label>Filtrar Temperaments:</label>
-            <select onChange={handleTemperamentsChange}>
+            <label className={style.formLabel}>Filtrar Temperaments:</label>
+            <select className={style.formControl} onChange={handleTemperamentsChange}>
               <option value="">All Temperaments</option>
-              {allTemperaments?.map((temp) =>(
+              {allTemperaments?.map((temp) => (
                 <option key={temp.id} value={temp.name}>
                   {temp.name}
                 </option>
@@ -106,21 +116,22 @@ function Home({filterr,dogsAscendente,dogsDescendente,filterTemperaments,pesoAsc
             </select>
           </div>
           <div>
-            <button onClick={handleReset}>Reset Filters</button>
+            <button className={style.resetButton} onClick={handleReset}>Reset Filters</button>
           </div>
-        </form>     
-        <CardConteiner />
+        </form>
+        <div className={style.cardContainer}>
+          <CardConteiner />
+        </div>
       </div>
     </>
   );
 }
 
-
-const mapStateToProps = (state) =>{
-  return{
-    temperaments: state.temperaments
-  }
-}
+const mapStateToProps = (state) => {
+  return {
+    temperaments: state.temperaments,
+  };
+};
 
 const mapDispatchToProps = {
   filterr,
@@ -128,10 +139,7 @@ const mapDispatchToProps = {
   dogsDescendente,
   pesoAscendente,
   pesoDescendente,
-  filterTemperaments
-}
+  filterTemperaments,
+};
 
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

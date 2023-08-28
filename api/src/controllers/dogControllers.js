@@ -9,7 +9,7 @@ const filterApi = (dataApi) => {
   return dataApi.map((dog) => {
     return {
       id: dog.id,
-      name: dog.name.toLowerCase(),
+      name: dog.name,
       image:
         "https://cdn2.thedogapi.com/images/" + dog.reference_image_id + ".jpg",
       min_height: parseInt(dog.height.metric.split("-")[0]),
@@ -85,7 +85,7 @@ const getDogsByName = async (name) => {
   const api = await axios.get("https://api.thedogapi.com/v1/breeds");
   const apiDogs = api.data;
   const dogsByName = apiDogs.filter(
-    (dog) => dog.name.toLowerCase() == name.toLowerCase()
+    (dog) =>  dog.name.toLowerCase().includes(name.toLowerCase())
   );
 
   const dogsApi = filterApi(dogsByName);
