@@ -45,6 +45,7 @@ export default function CardConteiner() {
         <div>
           {currentDogs.slice(0, 4).map((dogss) => (
             <Card
+              life_span={dogss.life_span}
               id={dogss?.id}
               key={dogss?.id}
               name={dogss?.name}

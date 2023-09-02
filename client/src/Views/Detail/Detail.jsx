@@ -32,9 +32,9 @@ export default function Detail() {
     <div className={styles.container}>
       {dogs.id ? (
         <div className={styles.card}>
+          <h2 className={styles.heading}>ID: {dogs.id}</h2>
           <img src={dogs.image} alt={dogs.name} className={styles.image} />
           <h2 className={styles.h2}>Name: {dogs.name}</h2>
-          <h2 className={styles.heading}>ID: {dogs.id}</h2>
           <h3 className={`${styles.info} ${styles.property} ${styles.temperaments}`}>Temperaments:{dogs.Temperaments}</h3>
           <h3 className={`${styles.info} ${styles.property} ${styles.height}`}>
             Height: {dogs.min_height}cm - {dogs.max_height}cm
@@ -45,7 +45,7 @@ export default function Detail() {
           <h3 className={`${styles.info} ${styles.property} ${styles.lifeSpan}`}>LifeSpan: {dogs.life_span}</h3>
         </div>
       ) : (
-        <p className={styles.alert}>Details not found</p>
+        <p className={styles.alert}>Loading....</p>
       )}
       <button className={styles.goBackButton} onClick={handleGoBack}>Back</button>
     </div>

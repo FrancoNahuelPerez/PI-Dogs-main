@@ -43,7 +43,7 @@ const getDogs = async () => {
 };
 
 const getDogsId = async (id) => {
-  console.log("id", id);
+
   if (id.length < 4) {
     if (id > 265 || id < 0) {
       throw new Error("No existen Dogs con ese ID");

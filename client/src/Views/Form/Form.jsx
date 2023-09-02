@@ -188,6 +188,8 @@ export default function Form() {
       newError.image = "Invalid image URL";
     } else if (image.length > 300) {
       newError.image = "Image URL cannot exceed 300 characters";
+    }else{
+      newError.image = '';
     }
 
     return newError;
@@ -353,7 +355,7 @@ export default function Form() {
               <p className={styles.formTemperamentName}>{getTemperamentName(element)}</p>
               <button 
               onClick={() => handleDelete(element)}
-              className={styles.formTemperamentDelete} ></button>
+              className={styles.formTemperamentDelete} >🐾</button>
             </div>
           );
         })}

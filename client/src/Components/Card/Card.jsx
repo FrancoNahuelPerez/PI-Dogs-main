@@ -9,6 +9,7 @@ export default function Card({
   minPeso,
   maxPeso,
   Temperaments,
+  life_span
 }) {
   const renderTemperaments = () => {
     if (typeof Temperaments === "string") {
@@ -37,6 +38,7 @@ export default function Card({
       <h4 className={style.cardWeight}>
         <span>{minPeso}Kg</span> - <span>{maxPeso}Kg</span>
       </h4>
+      {/* <h5>{life_span}</h5> */}
     </div>
   );
 }
