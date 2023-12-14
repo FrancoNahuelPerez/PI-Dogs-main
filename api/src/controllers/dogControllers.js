@@ -6,7 +6,7 @@ const filterApi = (dataApi) => {
   if (!Array.isArray(dataApi)) {
     throw new Error("dataApi must be an array");
   }
-  return dataApi.map((dog) => {
+  return dataApi.map((dog) => { //
     return {
       id: dog.id,
       name: dog.name,
@@ -18,7 +18,6 @@ const filterApi = (dataApi) => {
       max_weight: parseInt(dog.weight.metric.split("-")[1]),
       life_span: dog.life_span,
       Temperaments: dog.temperament,
-      fromApi: true,
     };
   });
 };
@@ -84,8 +83,7 @@ const getDogsId = async (id) => {
 const getDogsByName = async (name) => {
   const api = await axios.get("https://api.thedogapi.com/v1/breeds");
   const apiDogs = api.data;
-  const dogsByName = apiDogs.filter(
-    (dog) =>  dog.name.toLowerCase().includes(name.toLowerCase())
+  const dogsByName = apiDogs.filter( (dog) =>  dog.name.toLowerCase().includes(name.toLowerCase())
   );
 
   const dogsApi = filterApi(dogsByName);

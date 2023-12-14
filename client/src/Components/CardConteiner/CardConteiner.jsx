@@ -10,6 +10,7 @@ export default function CardConteiner() {
   const dogs = useSelector((state) => state.dogs);
   const cardPerPages = 8;
   const totalPages = Math.ceil(dogs.length / cardPerPages);
+  console.log('dogs', dogs)
 
   const [currentPage, setCurrentPage] = useState(0);
   const [reset, setReset] = useState(false);

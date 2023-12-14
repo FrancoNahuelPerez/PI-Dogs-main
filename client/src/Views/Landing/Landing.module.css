@@ -27,8 +27,8 @@
     font-weight: bold;
     color: #fff;
     background-color: #6f7bd7;
-    border: none;
-    border-radius: 20px;
+    border: none;   
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.2s;
   }
@@ -37,4 +37,24 @@
   }
   
 
+/*.button{ 
+    font-size: 20px;
+    border: none; 
+    color: black; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    font-family: cursive;
+    width: 115px;
+    transition: background-color 0.3s ease;
+}
 
+.primary {
+    background-color: white;
+    border: 4px solid;
+    border-image: linear-gradient(to right, #04a48c, #b2b4fc); /* Degradado de color para el borde */
+    /* border-image-slice: 1; /* Ajusta esto según tus necesidades */
+  /* }
+.primary:hover {
+    background: #029690;
+    color: */ 

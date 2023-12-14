@@ -19,9 +19,6 @@ const getTemperaments = async ()=>{
         }
     });
     const dog = await Temperaments.findAll()
-    // const dogss = dog.map((element) => element.name)
-    // console.log('dogs ---------------', dogss)
-    // const perritos = dogss.join(', ')
     return dog;
 }
 // const { Dog, Temperaments } = require("../db");

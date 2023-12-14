@@ -8,7 +8,7 @@ export default function Landing() {
     <div className={style.Landing}>
       <Link className={style.buttonContainer} to="/home">
         <div className={style.button}>
-          App Dogs 
+        🐾 App Dogs 🐾
         </div>
       </Link>
     </div>
